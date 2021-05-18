@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tv</title>
+    <script src="js/funcao.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body onload="carregar()">
+    <div id="painel">
+        <div id="painel-controle">
+            <div id="controle-corpo">
+                
+                <div id="controle-corpo-col1">
+                    <div id="ligar-desligar"><div>
+                        <input type="button" value="on/off"onclick="onoff()">
+                    </div>
+                </div>
+
+                    <div>Volume</div>
+                    <div >
+                        <input id="volmais" type="button" value="Vol +" onclick="vomais()">  
+                    </div>
+                        <div>
+                            <input id="volmenos" type="button" value="Vol -" onclick="vomenos()"> 
+                        </div>
+                </div>
+                <div id="controle-corpo-col2">
+                    <div>Canal</div>
+                    <div>
+                        <input id="chmais" type="button" value="CH +" onclick="chmais()"> 
+                    </div>
+                    <div>
+                        <input id="chmenos" type="button" value="CH -" onclick="chmenos()"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="painel-tv">
+            <div
+            id="tela-tv"></div>
+            <div id="borda-tv">
+                
+
+                
+            </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
