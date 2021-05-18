@@ -22,6 +22,11 @@ function carregar()
     voMenos.disabled = true;
     chMais.disabled  = true;
     chMenos.disabled = true;
+
+    alterarValorCanal();
+
+    console.log(estado)
+    alteraValorVolume()
 }
 
 function onoff()
@@ -29,81 +34,97 @@ function onoff()
     volumeAtual = 0;
     canalAtual = 1;
 
-    if(estado)
-    {
-        estado = false
-        voMais.disabled  = true;
-        voMenos.disabled = true;
-        chMais.disabled  = true;
-        chMenos.disabled = true;
-    }
-    else 
-    {
-        estado = true
-        voMais.disabled  = false;
-        voMenos.disabled = false;
-        chMais.disabled  = false;
-        chMenos.disabled = false;
-    }
+    voMais.disabled  = estado;
+    voMenos.disabled = estado;
+    chMais.disabled  = estado;
+    chMenos.disabled = estado;    
 
-    console.log(`Vol: ${volumeAtual} CH: ${canalAtual}`)
+    estado = !estado
+
+    document.getElementById("onoff").value = estado ? "off" : "on"  
+
+    alterarValorCanal();
+    alteraValorVolume()
 }
 
 function vomais()
 {
     volumeAtual++
-    console.log("Vol+: ", volumeAtual)
-
-    if(volumeAtual >= 10 )
-    {
-        voMais.disabled  = true;
-    }
-   else
-   {
-       voMenos.disabled = false;
-   }
+    console.log("Vol+: ", volumeAtual, (volumeAtual >= 10))
+    controlaVolBotao();
+    alteraValorVolume()
 }
 
 function vomenos()
 {
     volumeAtual--
-    console.log("Vol-: ", volumeAtual)
+    console.log("Vol-: ", volumeAtual, (volumeAtual < 0))
+    controlaVolBotao();  
+    alteraValorVolume()
+}
 
-    if(volumeAtual < 1)
-    {
-        voMenos.disabled  = true;
-    }
-    else
-    {
-        voMais.disabled = false;
-    }
-    
+function controlaVolBotao()
+{
+    voMais.disabled  = (volumeAtual >= 10 );
+    voMenos.disabled = (volumeAtual <= 0);
 }
 
 function chmais()
 {
-    canalAtual ++
-    console.log("ch+: ", canalAtual)
-    if(canalAtual >= 10) 
-    {
-        chMais.disabled  = true;
-    }
-    else
-    {
-        chMenos.disabled  = false;
-    }
+    canalAtual++
+    console.log("ch+: ", canalAtual, (canalAtual >= 10))
+    controlaChBotao();
+    alterarValorCanal();
 }
  
 function chmenos()
 {
-    canalAtual --
-    console.log("ch-: ", canalAtual)
-    if(canalAtual <= 2)
+    canalAtual--
+    console.log("ch-: ", canalAtual,(canalAtual <= 1))
+    controlaChBotao();
+    alterarValorCanal(); 
+}
+
+function controlaChBotao()
+{
+    chMais.disabled  = (canalAtual >= 10);
+    chMenos.disabled = (canalAtual <= 1); 
+}
+
+function alterarValorCanal()
+{
+    document.getElementById("ch-valor").innerHTML = estado ? canalAtual : "...";
+}
+
+function alteraValorVolume()
+{
+    document.getElementById("vol-valor").innerHTML = formataVolume();
+}
+
+function formataVolume()
+{   
+    let item = "";
+    
+    if (estado)
     {
-        chMenos.disabled = true;
+        for (let i = 0; i <= volumeAtual; i++)
+        {
+            if (i === 0)
+                item = "Mudo";
+            else
+            if (i === 1)
+                item = "|";
+            else
+                item += "|";
+        }
     }
     else
-    {
-        chMais.disabled = false;
-    }
+        item = "...";
+
+    return item;
 }
+
+
+
+
+

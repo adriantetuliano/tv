@@ -4,12 +4,6 @@ body
    font: normal 15pt Arial;
 }
 
-/* header
-{
-    color:rgb(255, 255, 255);
-    text-align: center;
-} */
-
 #painel
 {
     display: flex;
@@ -70,4 +64,22 @@ div
 {
     text-align: center;
     padding: 8px
+}
+
+#painel-ctrl-tv 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#painel-ctrl-tv-vol
+{
+
+    color: white;
+}
+
+#painel-ctrl-tv-ch
+{
+    color: white;
 }

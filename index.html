@@ -16,7 +16,7 @@
                 
                 <div id="controle-corpo-col1">
                     <div id="ligar-desligar"><div>
-                        <input type="button" value="on/off"onclick="onoff()">
+                        <input type="button" value="on" id="onoff" onclick="onoff()">
                     </div>
                 </div>
 
@@ -40,15 +40,17 @@
             </div>
         </div>
         <div id="painel-tv">
-            <div
-            id="tela-tv"></div>
-            <div id="borda-tv">
-                
-
-                
+            <div id="tela-tv">
+                imagens
             </div>
-                
-            </div>
+            <div id="painel-ctrl-tv">
+                <div id="painel-ctrl-tv-vol">
+                    Vol: - <span id="vol-valor">...</span> +
+                </div>
+                <div id="painel-ctrl-tv-ch">
+                    Ch: <span id="ch-valor">...</span>
+                </div>
+             </div>
         </div>
     </div>
 </body>
